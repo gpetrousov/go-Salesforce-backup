@@ -149,7 +149,7 @@ func transferFile(downloadLink string, salesforceConnectionCookies map[string]in
 	log.Println("Uploading file to S3 bucket...")
 	_, uploadError := uploadFileToS3(amazonSession, applicationConfiguration.Amazon, fileName)
 	if uploadError != nil {
-		log.Println("Error downloading the file from target location")
+		log.Println("Error uploading the file to target location")
 		return fileName, uploadError
 	} else {
 		log.Println("Upload Successful!!")
