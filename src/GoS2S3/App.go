@@ -5,12 +5,15 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
 	"time"
+
 	// "encoding/json"
 	"GoS2S3/SalesforceWSDL"
 	"GoS2S3/salesforceUtil"
+
 	"github.com/aws/aws-sdk-go/aws/session"
 )
 
@@ -21,9 +24,9 @@ var todayEpoch int64
 func main() {
 
 	arguments := os.Args
-  
-	for index, element := range arguments {
-		if element == "-help"{
+
+	for _, element := range arguments {
+		if element == "-help" {
 			// Put here some help explanation
 			fmt.Println("This is a help page!")
 			os.Exit(3)
@@ -55,11 +58,10 @@ func main() {
 		log.Println("we are in NORMAL mode")
 	}
 
-
-	for index, element := range arguments {
+	for _, element := range arguments {
 		if element == "-config" {
 			var configuration Configuration
-		
+
 			configuration.LoadConfigFrom("application-config.json")
 		}
 	}
