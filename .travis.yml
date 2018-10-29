@@ -1,0 +1,20 @@
+sudo: false
+
+language: go
+
+go:
+  - 1.11.x
+
+git:
+  depth: 1
+
+notifications:
+  email: false
+
+before_script:
+  - go get -d -v golang.org/x/net/html
+  - go get -d -v -u github.com/aws/aws-sdk-go
+  - go install -v .
+
+script:
+  - golint src/*
